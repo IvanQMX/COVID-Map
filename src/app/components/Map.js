@@ -5,6 +5,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_dataCountries2 from "@amcharts/amcharts4-geodata/data/countries2";
 import am4themes_moonrisekingdom from "@amcharts/amcharts4/themes/moonrisekingdom";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+let totalConfirmedCases = 0;
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
@@ -14,8 +15,7 @@ class Map extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            states: [],
-            totalConfirmedCases: 0
+            states: []
         }
         this.fetchStatesData = this.fetchStatesData.bind(this);
         this.drawMap = this.drawMap.bind(this);
@@ -30,6 +30,9 @@ class Map extends React.Component{
             .then(res => res.json())
             .then(data => {
                 this.setState({states: data});
+                for(const datum of data){
+                    totalConfirmedCases += datum.data[0].confirmedCases;                    
+                }
                 this.drawMap();
             })
             .catch(err => console.error(err))
@@ -39,8 +42,6 @@ class Map extends React.Component{
         const states = this.state.states;
         // Create map instance
         let chart = am4core.create("chartdiv", am4maps.MapChart);
-
-        let totalConfirmedCases = 0;
 
         // Set map definition
         chart.geodataSource.url = "https://www.amcharts.com/lib/4/geodata/json/mexicoLow.json";
@@ -65,7 +66,6 @@ class Map extends React.Component{
                         else {
                             colorFill = "#910E07";
                         }
-                        totalConfirmedCases += state.data[0].confirmedCases;
                         data.push({
                             id: ev.target.data.features[i].id,
                             fill: am4core.color(colorFill),
@@ -147,7 +147,7 @@ class Map extends React.Component{
         legendTitle.text = "[bold]Número de Casos Confirmados[/]";
 
         let totalCases = container.createChild(am4core.Label);
-        totalCases.text = `[bold]Total de Casos Confirmados: {confirmedCases.sum}[/]`;
+        totalCases.text = `[bold]Total de Casos Confirmados: ${totalConfirmedCases}[/]`;
         totalCases.valign = "bottom";
         totalCases.toFront();
     }

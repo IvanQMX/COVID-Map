@@ -92,7 +92,7 @@ class App extends React.Component {
                 </div>
                 <footer className="footer mt-auto py-3 bg-dark">
                     <div className="container text-center">
-                        <span className="text-white">Esta aplicación fue creada por: <strong>Reverse117</strong></span>
+                        <span className="text-white">Esta aplicación fue creada por: <strong>IQM</strong></span>
                     </div>
                 </footer>
             </div>
