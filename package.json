@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "npx nodemon src/index.js",
-    "build": "npx webpack --watch --mode development"
+    "webpack": "npx webpack --watch --mode development"
   },
   "repository": {
     "type": "git",
