@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+require('./data');
 
 const StateSchema = new Schema({
     id: { type: Number, required: true },
