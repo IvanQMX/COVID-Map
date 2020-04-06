@@ -3,7 +3,7 @@ import NationalGraph from './NationalGraph';
 import StateGraph from './StateGraph';
 import Map from './Map';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion, faFire } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import '../css/App.css';
@@ -133,7 +133,10 @@ class App extends React.Component {
                 </div>
                 <footer className="footer mt-auto py-3 bg-dark">
                     <div className="container text-center">
-                        <span className="text-white">Esta aplicación fue creada por: <strong>IQM</strong></span>
+                        <span className="text-light">Esta aplicación fue creada por: </span>
+                        <span className="text-warning"><FontAwesomeIcon icon={faFire} /></span>
+                        <span className="text-danger"><strong>&nbsp;IQM&nbsp;</strong></span>
+                        <span className="text-warning"><FontAwesomeIcon icon={faFire} /></span>
                     </div>
                 </footer>
             </div>
