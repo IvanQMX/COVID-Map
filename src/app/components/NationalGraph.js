@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js';
+Chart.defaults.global.elements.point.radius = 5;
 
 class NationalGraph extends React.Component {
     constructor(props) {

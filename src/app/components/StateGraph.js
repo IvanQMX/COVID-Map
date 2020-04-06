@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js';
+Chart.defaults.global.elements.point.radius = 5;
 let myChart;
 
 class StateGraph extends React.Component {
