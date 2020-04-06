@@ -3,7 +3,7 @@ import NationalGraph from './NationalGraph';
 import StateGraph from './StateGraph';
 import Map from './Map';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestion, faFire } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion, faFire, faSquare } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import '../css/App.css';
@@ -106,6 +106,30 @@ class App extends React.Component {
                                     </div>
                                     <div className="card-body">
                                         <Map onSelectedState={this.handleSelectedState}/>
+                                    </div>
+                                    <div className="card-footer">
+                                        <div className="row row-cols-2 justify-content-around">
+                                            <div className="col-auto mb-2">
+                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#9AC443" className="align-middle mr-2"/>
+                                                <span className="font-weight-bolder">1-50</span>
+                                            </div>
+                                            <div className="col-auto mb-2">
+                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#61AA28" className="align-middle mr-2"/>
+                                                <span className="font-weight-bolder">51-100</span>
+                                            </div>
+                                            <div className="col-auto mb-2">
+                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#F8AA28" className="align-middle mr-2"/>
+                                                <span className="font-weight-bolder">101-250</span>
+                                            </div>
+                                            <div className="col-auto mb-2">
+                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#F15A24" className="align-middle mr-2"/>
+                                                <span className="font-weight-bolder">251-500</span>
+                                            </div>
+                                            <div className="col-auto mb-2">
+                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#910E07" className="align-middle mr-2"/>
+                                                <span className="font-weight-bolder">501-1000</span>
+                                            </div>
+                                        </div>
                                     </div>
                             </div>
                         </div>

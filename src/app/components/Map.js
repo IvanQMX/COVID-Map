@@ -5,6 +5,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_dataCountries2 from "@amcharts/amcharts4-geodata/data/countries2";
 import am4themes_moonrisekingdom from "@amcharts/amcharts4/themes/moonrisekingdom";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { isMobile } from 'react-device-detect';
 let totalConfirmedCases = 0;
 
 // Themes begin
@@ -98,7 +99,10 @@ class Map extends React.Component{
         Casos Negativos: {negativeCases}<br>
         Casos Sospechosos: {suspectedCases}<br>
         Muertes: {deaths}<br>
-        `
+        `;
+        if (isMobile) {
+            polygonTemplate.showTooltipOn = "hit";
+        }
         polygonTemplate.nonScalingStroke = true;
         polygonTemplate.strokeWidth = 0.5;
         polygonTemplate.propertyFields.fill = "fill";
@@ -110,46 +114,13 @@ class Map extends React.Component{
         let container = new am4core.Container();
         container.parent = chart.chartContainer;
         container.layout = "vertical";
-        container.align = "right";
+        container.align = "center";
         container.valign = "top";
         container.background.fill = am4core.color("#000");
         container.background.fillOpacity = 0.05;
 
-        // Custom legend
-        let legend = container.createChild(am4maps.Legend);
-        legend.position = "right";
-        legend.itemContainers.template.clickable = false;
-        legend.itemContainers.template.focusable = false;
-        legend.data = [
-            {
-                "name": "[bold]1 a 50[/]",
-                fill: am4core.color("#9AC443")
-            },
-            {
-                "name": "[bold]51 a 100[/]",
-                fill: am4core.color("#61AA28")
-            },
-            {
-                "name": "[bold]101 a 250[/]",
-                fill: am4core.color("#F8AA28")
-            },
-            {
-                "name": "[bold]251 a 500[/]",
-                fill: am4core.color("#F15A24")
-            },
-            {
-                "name": "[bold]501 a 1000[/]",
-                fill: am4core.color("#910E07")
-            },
-        ];
-
-        let legendTitle = legend.createChild(am4core.Label);
-        legendTitle.text = "[bold]Número de Casos Confirmados[/]";
-
         let totalCases = container.createChild(am4core.Label);
         totalCases.text = `[bold]Total de Casos Confirmados: ${totalConfirmedCases}[/]`;
-        totalCases.valign = "bottom";
-        totalCases.toFront();
     }
 
     componentDidMount() {
