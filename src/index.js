@@ -2,10 +2,6 @@ const express = require('express');
 const chalk = require('chalk');
 const path = require('path');
 const morgan = require('morgan');
-var cron = require('node-cron');
-const helpers = require('./helpers');
-var moment = require('moment')
-moment().format();
 
 const app = express();
 
@@ -39,13 +35,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Starting server
 app.listen(app.get('port'), () => {
     console.log(chalk.blue.bold('Server on port:'), chalk.green.bold( app.get('port') ) );
-
-    cron.schedule('20 1 * * *', () => {
-        var now = moment().format('LTS');
-        console.log('running every minute', now);
-    });
-
-    // helpers.fecthData('https://ncov.sinave.gob.mx/Mapa.aspx/Grafica22', false);
-    // helpers.setStates(false);
-
 });
