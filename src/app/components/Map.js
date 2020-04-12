@@ -98,7 +98,7 @@ class Map extends React.Component{
         Casos Confirmados: {confirmedCases}<br>
         Casos Negativos: {negativeCases}<br>
         Casos Sospechosos: {suspectedCases}<br>
-        Muertes: {deaths}<br>
+        Decesos: {deaths}<br>
         `;
         if (isMobile) {
             polygonTemplate.showTooltipOn = "hit";
@@ -121,6 +121,18 @@ class Map extends React.Component{
 
         let totalCases = container.createChild(am4core.Label);
         totalCases.text = `[bold]Total de Casos Confirmados: ${totalConfirmedCases}[/]`;
+
+        let button = chart.chartContainer.createChild(am4core.Button);
+        button.padding(5, 5, 5, 5);
+        button.align = "right";
+        button.valign = "bottom";
+        button.marginRight = 15;
+        button.marginBottom = 15;
+        button.events.on("hit", () => {
+            chart.goHome();
+        });
+        button.icon = new am4core.Sprite();
+        button.icon.path = "M16,8 L14,8 L14,16 L10,16 L10,10 L6,10 L6,16 L2,16 L2,8 L0,8 L8,0 L16,8 Z M16,8";
     }
 
     componentDidMount() {

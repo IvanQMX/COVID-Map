@@ -1,6 +1,10 @@
 import React from 'react';
 import Chart from 'chart.js';
-Chart.defaults.global.elements.point.radius = 5;
+import { isMobile } from 'react-device-detect';
+
+if (isMobile) {
+    Chart.defaults.global.elements.point.radius = 5;
+}
 
 class NationalGraph extends React.Component {
     constructor(props) {
@@ -19,7 +23,7 @@ class NationalGraph extends React.Component {
         const nationalDeaths = this.state.national.map(data => data.deaths);
         const nationalDates = this.state.national.map(data => data.date);
         const ctx = this.chartRef.current;
-        var myChart = new Chart(ctx, {
+        let myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: nationalDates,
@@ -32,7 +36,7 @@ class NationalGraph extends React.Component {
                         borderWidth: 2
                     },
                     {
-                        label: 'Muertos',
+                        label: 'Fallecidos',
                         data: nationalDeaths,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 1)',

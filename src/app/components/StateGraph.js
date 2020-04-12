@@ -1,7 +1,11 @@
 import React from 'react';
 import Chart from 'chart.js';
-Chart.defaults.global.elements.point.radius = 5;
+import { isMobile } from 'react-device-detect';
+
 let myChart;
+if (isMobile) {
+    Chart.defaults.global.elements.point.radius = 5;
+}
 
 class StateGraph extends React.Component {
     constructor(props) {
@@ -50,7 +54,7 @@ class StateGraph extends React.Component {
                         borderWidth: 2
                     },
                     {
-                        label: 'Muertos',
+                        label: 'Fallecidos',
                         data: nationalDeaths,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 1)',
