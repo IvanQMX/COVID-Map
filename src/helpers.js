@@ -17,6 +17,9 @@ helpers.fecthData = (URI, testing) => {
             let confirmedCases = 0;
             let deaths = 0;
             for(state of states) {
+                if(state[1] === 'NACIONAL') {
+                    continue;
+                }
                 confirmedCases += parseInt(state[4]);
                 deaths += parseInt(state[7]);
                 const stateData = new Data({
