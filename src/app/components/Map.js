@@ -64,6 +64,9 @@ class Map extends React.Component{
                         else if (state.data[0].confirmedCases < 501) {
                             colorFill = "#F15A24";
                         }
+                        else if (state.data[0].confirmedCases < 1001) {
+                            colorFill = "#F3170C";
+                        }
                         else {
                             colorFill = "#910E07";
                         }

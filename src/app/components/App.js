@@ -126,8 +126,12 @@ class App extends React.Component {
                                                 <span className="font-weight-bolder">251-500</span>
                                             </div>
                                             <div className="col-auto mb-2">
-                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#910E07" className="align-middle mr-2"/>
+                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#F3170C" className="align-middle mr-2"/>
                                                 <span className="font-weight-bolder">501-1000</span>
+                                            </div>
+                                            <div className="col-auto mb-2">
+                                                <FontAwesomeIcon icon={faSquare} size="2x" color="#910E07" className="align-middle mr-2"/>
+                                                <span className="font-weight-bolder">1001-3000</span>
                                             </div>
                                         </div>
                                     </div>
