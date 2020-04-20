@@ -45,7 +45,7 @@ app.listen(app.get('port'), () => {
         console.log('running every minute', now);
     });
 
-    helpers.fecthData('https://ncov.sinave.gob.mx/Mapa.aspx/Grafica22', true);
+    helpers.fecthData('https://covid19.sinave.gob.mx/Log.aspx/Grafica22', false);
     // helpers.setStates(false);
 
 });
